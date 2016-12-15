@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "biz.dfch.CS.Examples.DI.StructureMap.Tests", "biz.dfch.CS.Examples.DI.StructureMap.Tests\biz.dfch.CS.Examples.DI.StructureMap.Tests.csproj", "{C5A7B036-AC29-4DB8-88CA-9F455CFFA454}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "biz.dfch.CS.Examples.DI.StructureMap", "biz.dfch.CS.Examples.DI.StructureMap\biz.dfch.CS.Examples.DI.StructureMap.csproj", "{AAAB2AFB-A44A-45F1-842F-4A0E1010E981}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5A7B036-AC29-4DB8-88CA-9F455CFFA454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A7B036-AC29-4DB8-88CA-9F455CFFA454}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A7B036-AC29-4DB8-88CA-9F455CFFA454}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A7B036-AC29-4DB8-88CA-9F455CFFA454}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAAB2AFB-A44A-45F1-842F-4A0E1010E981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAAB2AFB-A44A-45F1-842F-4A0E1010E981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAAB2AFB-A44A-45F1-842F-4A0E1010E981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAAB2AFB-A44A-45F1-842F-4A0E1010E981}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
