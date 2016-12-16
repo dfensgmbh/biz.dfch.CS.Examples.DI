@@ -171,6 +171,7 @@
       <DependentUpon>Resouces.resx</DependentUpon>
     </Compile>
     <Compile Include="IoC\IoC.cs" />
+    <Compile Include="SetterInjection\ClassWithAnnotatedSetterProperties.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

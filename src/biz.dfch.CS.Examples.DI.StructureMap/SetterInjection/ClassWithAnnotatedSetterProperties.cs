@@ -14,19 +14,22 @@
  * limitations under the License.
  */
 
-using System.Diagnostics.Contracts;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using biz.dfch.CS.Commons;
+using biz.dfch.CS.Examples.DI.StructureMap.Message;
+using StructureMap.Attributes;
 
-namespace biz.dfch.CS.Examples.DI.StructureMap.Message
+namespace biz.dfch.CS.Examples.DI.StructureMap.SetterInjection
 {
-    [ContractClassFor(typeof(IMessage))]
-    public abstract class ContractClassForIMessage : IMessage
+    public class ClassWithAnnotatedSetterProperties : BaseDto
     {
-        public void Send(string subject, string message)
-        {
-            Contract.Requires(!string.IsNullOrWhiteSpace(subject));
-            Contract.Requires(!string.IsNullOrWhiteSpace(message));
+        [Required]
+        [DefaultValue("tralala")]
+        public string StringProperty { get; set; }
 
-            return;
-        }
+        [SetterProperty]
+        [Required]
+        public IMessage Message { get; set; }
     }
 }
