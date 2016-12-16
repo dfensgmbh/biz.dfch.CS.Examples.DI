@@ -156,6 +156,7 @@
     <Compile Include="IFoo.cs" />
     <Compile Include="IoC\ControllerRegistrationConvention.cs" />
     <Compile Include="IoC\ControllerRegistry.cs" />
+    <Compile Include="IoC\InlineSetterRegistry.cs" />
     <Compile Include="Message\ContractClassForIMessage.cs" />
     <Compile Include="Message\IMessage.cs" />
     <Compile Include="Message\IMessageSettings.cs" />

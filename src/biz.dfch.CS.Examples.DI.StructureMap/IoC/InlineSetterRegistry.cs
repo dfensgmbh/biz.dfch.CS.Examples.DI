@@ -14,24 +14,24 @@
  * limitations under the License.
  */
 
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using biz.dfch.CS.Commons;
 using biz.dfch.CS.Examples.DI.StructureMap.Message;
-using StructureMap.Attributes;
+using biz.dfch.CS.Examples.DI.StructureMap.SetterInjection;
+using StructureMap;
 
-namespace biz.dfch.CS.Examples.DI.StructureMap.SetterInjection
+namespace biz.dfch.CS.Examples.DI.StructureMap.IoC
 {
-    public class ClassWithAnnotatedSetterProperties : BaseDto
+    public class InlineSetterRegistry : Registry
     {
-        [Required]
-        [DefaultValue("tralala")]
-        public string StringProperty { get; set; }
+        public InlineSetterRegistry()
+        {
+            Scan(scanner =>
+            {
+                scanner.TheCallingAssembly();
+                scanner.WithDefaultConventions();
+            });
 
-        [SetterProperty]
-        [Required]
-        public IMessage Message { get; set; }
-
-        public IMessageSettings MessageSettings { get; set; }
+            For<ClassWithAnnotatedSetterProperties>().Use<ClassWithAnnotatedSetterProperties>()
+                .Setter<IMessageSettings>().Is<MessageSettings>();
+        }
     }
 }

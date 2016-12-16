@@ -35,5 +35,29 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.Tests.SetterInjection
             Assert.IsNotNull(errorMessages);
             Assert.IsTrue(errorMessages.Any(e => e.Contains("Message")));
         }
+
+        [TestMethod]
+        public void InstantiationWithDefaultInjectionSucceeds()
+        {
+            var container = IoC.IoC.CreateContainerWithDefaultRegistry();
+
+            var sut = container.GetInstance<ClassWithAnnotatedSetterProperties>();
+
+            var result = sut.IsValid();
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void InstantiationWithInlineInjectionSucceeds()
+        {
+            var container = IoC.IoC.CreateContainerWithInlineSetter();
+
+            var sut = container.GetInstance<ClassWithAnnotatedSetterProperties>();
+
+            var result = sut.IsValid();
+            Assert.IsTrue(result);
+
+            Assert.IsNotNull(sut.MessageSettings);
+        }
     }
 }
