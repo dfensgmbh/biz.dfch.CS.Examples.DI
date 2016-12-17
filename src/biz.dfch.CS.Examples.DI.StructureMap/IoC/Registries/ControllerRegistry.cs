@@ -14,18 +14,26 @@
  * limitations under the License.
  */
 
+using biz.dfch.CS.Examples.DI.StructureMap.CustomRegistrationConvention;
+using biz.dfch.CS.Examples.DI.StructureMap.IoC.Conventions;
 using StructureMap;
 
-namespace biz.dfch.CS.Examples.DI.StructureMap.IoC
+namespace biz.dfch.CS.Examples.DI.StructureMap.IoC.Registries
 {
-    public class DefaultRegistry : Registry
+    public class ControllerRegistry : Registry
     {
-        public DefaultRegistry()
+        public ControllerRegistry()
         {
             Scan(scanner =>
             {
                 scanner.TheCallingAssembly();
-                scanner.WithDefaultConventions();
+                scanner.Convention<ControllerRegistrationConvention>();
+            });
+
+            For<ControllerSettings>().Use(new ControllerSettings()
+            {
+                Name = "ArbitraryName",
+                Description = "ArbitraryDescription",
             });
         }
     }

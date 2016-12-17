@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+using biz.dfch.CS.Examples.DI.StructureMap.IoC.Registries;
 using StructureMap;
 
 namespace biz.dfch.CS.Examples.DI.StructureMap.IoC

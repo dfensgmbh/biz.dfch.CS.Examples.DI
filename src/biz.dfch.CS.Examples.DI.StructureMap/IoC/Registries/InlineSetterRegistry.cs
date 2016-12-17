@@ -14,22 +14,24 @@
  * limitations under the License.
  */
 
-using System.Configuration;
 using biz.dfch.CS.Examples.DI.StructureMap.Message;
+using biz.dfch.CS.Examples.DI.StructureMap.SetterInjection;
 using StructureMap;
 
-namespace biz.dfch.CS.Examples.DI.StructureMap.IoC
+namespace biz.dfch.CS.Examples.DI.StructureMap.IoC.Registries
 {
-    public class MessageSettingsFromConfigurationSectionRegistry : Registry
+    public class InlineSetterRegistry : Registry
     {
-        public MessageSettingsFromConfigurationSectionRegistry()
+        public InlineSetterRegistry()
         {
-            // we load the section from app.config
+            Scan(scanner =>
+            {
+                scanner.TheCallingAssembly();
+                scanner.WithDefaultConventions();
+            });
 
-            For<IMessageSettings>().Use(() => 
-                (MessageSettingsFromConfigSection) ConfigurationManager
-                .GetSection(MessageSettingsFromConfigSection.SECTION_NAME)
-            );
+            For<ClassWithAnnotatedSetterProperties>().Use<ClassWithAnnotatedSetterProperties>()
+                .Setter<IMessageSettings>().Is<MessageSettings>();
         }
     }
 }

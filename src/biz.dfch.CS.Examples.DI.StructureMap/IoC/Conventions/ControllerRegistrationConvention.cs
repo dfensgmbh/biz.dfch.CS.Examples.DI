@@ -17,15 +17,14 @@
 using System.Diagnostics.Contracts;
 using System.Linq;
 using biz.dfch.CS.Examples.DI.StructureMap.CustomRegistrationConvention;
-using StructureMap;
 using StructureMap.Graph;
 using StructureMap.Graph.Scanning;
 
-namespace biz.dfch.CS.Examples.DI.StructureMap.IoC
+namespace biz.dfch.CS.Examples.DI.StructureMap.IoC.Conventions
 {
     public class ControllerRegistrationConvention : IRegistrationConvention
     {
-        public void ScanTypes(TypeSet types, Registry registry)
+        public void ScanTypes(TypeSet types, global::StructureMap.Registry registry)
         {
             Contract.Requires(null != types);
             Contract.Requires(null != registry);
