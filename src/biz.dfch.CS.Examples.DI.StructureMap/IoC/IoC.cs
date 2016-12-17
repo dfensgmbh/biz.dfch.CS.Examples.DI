@@ -91,5 +91,20 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.IoC
             return result;
         }
 
+        public static Container CreateContainerForPluginSelection()
+        {
+            var registry = new Registry();
+            registry.IncludeRegistry<DefaultRegistry>();
+            registry.IncludeRegistry<PluginSelectionRegistry>();
+
+            var result = new Container(registry);
+
+            PluginContainer = result;
+
+            return result;
+        }
+
+        public static Container PluginContainer { get; private set; }
+
     }
 }

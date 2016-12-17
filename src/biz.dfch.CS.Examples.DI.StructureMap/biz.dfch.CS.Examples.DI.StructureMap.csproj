@@ -122,10 +122,6 @@
       <HintPath>..\packages\biz.dfch.CS.Commons.1.8.2\lib\biz.dfch.CS.Commons.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\biz.dfch.CS.Commons.1.8.2\lib\log4net\log4net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\biz.dfch.CS.Commons.1.8.2\lib\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -154,11 +150,20 @@
     <Compile Include="Foo.cs" />
     <Compile Include="CodeContracts.cs" />
     <Compile Include="IFoo.cs" />
+    <Compile Include="InjectionDependingOnAppConfig\AlphaPluginSettings.cs" />
+    <Compile Include="InjectionDependingOnAppConfig\ContractClassForIPlugin.cs" />
+    <Compile Include="InjectionDependingOnAppConfig\DefaultPluginSettings.cs" />
+    <Compile Include="InjectionDependingOnAppConfig\DefaultPlugin.cs" />
+    <Compile Include="InjectionDependingOnAppConfig\IPlugin.cs" />
+    <Compile Include="InjectionDependingOnAppConfig\AlphaPlugin.cs" />
+    <Compile Include="InjectionDependingOnAppConfig\PluginConfigurationSection.cs" />
+    <Compile Include="InjectionDependingOnAppConfig\PluginHost.cs" />
     <Compile Include="IoC\Conventions\PropertySetterRegistrationConvention.cs" />
     <Compile Include="IoC\Conventions\ControllerRegistrationConvention.cs" />
     <Compile Include="IoC\Registries\InlineSetterBasedOnTypeRegistry.cs" />
     <Compile Include="IoC\Registries\ControllerRegistry.cs" />
     <Compile Include="IoC\Registries\InlineSetterRegistry.cs" />
+    <Compile Include="IoC\Registries\PluginSelectionRegistry.cs" />
     <Compile Include="Message\ContractClassForIMessage.cs" />
     <Compile Include="Message\IMessage.cs" />
     <Compile Include="Message\IMessageSettings.cs" />
