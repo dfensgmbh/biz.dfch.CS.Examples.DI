@@ -15,6 +15,7 @@
  */
 
 using System.Configuration;
+using System.Diagnostics.Contracts;
 using biz.dfch.CS.Examples.DI.StructureMap.Message;
 using StructureMap;
 
@@ -26,10 +27,21 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.IoC.Registries
         {
             // we load the section from app.config
 
-            For<IMessageSettings>().Use(() => 
-                (MessageSettingsFromConfigSection) ConfigurationManager
-                .GetSection(MessageSettingsFromConfigSection.SECTION_NAME)
-            );
+            //For<IMessageSettings>().Use(() => 
+            //    (MessageSettingsFromConfigSection) ConfigurationManager
+            //    .GetSection(MessageSettingsFromConfigSection.SECTION_NAME)
+            //);
+            For<IMessageSettings>().Use(() => GetConfigSection());
+        }
+
+        public static MessageSettingsFromConfigSection GetConfigSection()
+        {
+            var result = ConfigurationManager.GetSection(MessageSettingsFromConfigSection.SECTION_NAME)
+                as MessageSettingsFromConfigSection;
+
+            Contract.Assert(null != result, MessageSettingsFromConfigSection.SECTION_NAME);
+
+            return result;
         }
     }
 }
