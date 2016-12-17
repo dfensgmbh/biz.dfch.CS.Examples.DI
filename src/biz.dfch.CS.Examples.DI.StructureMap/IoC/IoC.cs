@@ -82,5 +82,14 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.IoC
             return result;
         }
 
+        public static Container CreateContainerWithInlineSetterBasedOnType()
+        {
+            var registry = new Registry();
+            registry.IncludeRegistry<InlineSetterBasedOnTypeRegistry>();
+
+            var result = new Container(registry);
+            return result;
+        }
+
     }
 }

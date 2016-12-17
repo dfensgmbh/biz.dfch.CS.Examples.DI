@@ -165,7 +165,9 @@
     <Compile Include="ClassUsingIFooTest.cs" />
     <Compile Include="CodeContractsTest.cs" />
     <Compile Include="CustomRegistrationConvention\SpecialControllerTest.cs" />
+    <Compile Include="IoC\Conventions\PropertySetterRegistrationConventionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetterInjection\AnotherClassWithSetterPropertyTest.cs" />
     <Compile Include="SetterInjection\ClassWithAnnotatedSetterPropertiesTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +179,9 @@
       <Project>{aaab2afb-a44a-45f1-842f-4a0e1010e981}</Project>
       <Name>biz.dfch.CS.Examples.DI.StructureMap</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IoC\Registries\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

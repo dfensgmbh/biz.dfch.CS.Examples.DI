@@ -27,7 +27,7 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.Tests.CustomRegistrationConventio
         [ExpectedException(typeof(StructureMapConfigurationException))]
         public void TestRegistrationViaDefaultRegistry()
         {
-            var container = IoC.IoC.CreateContainerWithDefaultRegistry();
+            var container = StructureMap.IoC.IoC.CreateContainerWithDefaultRegistry();
 
             var sut = container.GetInstance<IController>();
         }
@@ -35,7 +35,7 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.Tests.CustomRegistrationConventio
         [TestMethod]
         public void TestRegistrationViaControllerRegistry()
         {
-            var container = IoC.IoC.CreateContainerWithControllerRegistry();
+            var container = StructureMap.IoC.IoC.CreateContainerWithControllerRegistry();
 
             var sut = container.GetInstance<IController>();
             Assert.IsNotNull(sut);

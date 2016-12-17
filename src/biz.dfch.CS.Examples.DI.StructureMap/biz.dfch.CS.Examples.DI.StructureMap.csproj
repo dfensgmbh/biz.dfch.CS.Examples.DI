@@ -154,7 +154,9 @@
     <Compile Include="Foo.cs" />
     <Compile Include="CodeContracts.cs" />
     <Compile Include="IFoo.cs" />
+    <Compile Include="IoC\Conventions\PropertySetterRegistrationConvention.cs" />
     <Compile Include="IoC\Conventions\ControllerRegistrationConvention.cs" />
+    <Compile Include="IoC\Registries\InlineSetterBasedOnTypeRegistry.cs" />
     <Compile Include="IoC\Registries\ControllerRegistry.cs" />
     <Compile Include="IoC\Registries\InlineSetterRegistry.cs" />
     <Compile Include="Message\ContractClassForIMessage.cs" />
@@ -172,7 +174,9 @@
       <DependentUpon>Resouces.resx</DependentUpon>
     </Compile>
     <Compile Include="IoC\IoC.cs" />
+    <Compile Include="SetterInjection\AnotherClassWithSetterProperty.cs" />
     <Compile Include="SetterInjection\ClassWithAnnotatedSetterProperties.cs" />
+    <Compile Include="SetterInjection\IMessageSettingsSetterInjection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

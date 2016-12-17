@@ -18,20 +18,16 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using biz.dfch.CS.Commons;
 using biz.dfch.CS.Examples.DI.StructureMap.Message;
-using StructureMap.Attributes;
 
 namespace biz.dfch.CS.Examples.DI.StructureMap.SetterInjection
 {
-    public class ClassWithAnnotatedSetterProperties : BaseDto, IMessageSettingsSetterInjection
+    public class AnotherClassWithSetterProperty : BaseDto, IMessageSettingsSetterInjection
     {
         [Required]
         [DefaultValue("tralala")]
         public string StringProperty { get; set; }
 
-        [SetterProperty]
         [Required]
-        public IMessage Message { get; set; }
-
         public IMessageSettings MessageSettings { get; set; }
     }
 }

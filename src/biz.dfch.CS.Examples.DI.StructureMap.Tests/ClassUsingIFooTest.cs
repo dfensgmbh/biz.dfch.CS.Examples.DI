@@ -27,7 +27,7 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.Tests
         [ExpectedException(typeof(StructureMapConfigurationException))]
         public void TestRegistrationManually()
         {
-            var container = IoC.IoC.CreateContainerManually();
+            var container = StructureMap.IoC.IoC.CreateContainerManually();
 
             var sut = container.GetInstance<ClassUsingIFoo>();
 
@@ -39,7 +39,7 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.Tests
         [TestMethod]
         public void TestRegistrationViaScan()
         {
-            var container = IoC.IoC.CreateContainerViaScan();
+            var container = StructureMap.IoC.IoC.CreateContainerViaScan();
 
             var sut = container.GetInstance<ClassUsingIFoo>();
 
@@ -52,7 +52,7 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.Tests
         [TestMethod]
         public void TestRegistrationViaRegistry()
         {
-            var container = IoC.IoC.CreateContainerWithDefaultRegistry();
+            var container = StructureMap.IoC.IoC.CreateContainerWithDefaultRegistry();
 
             var sut = container.GetInstance<ClassUsingIFoo>();
 
@@ -64,7 +64,7 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.Tests
         [TestMethod]
         public void TestRegistrationViaRegistryWithCustomMappingFromAppSettings()
         {
-            var container = IoC.IoC.CreateContainerWithRegistryFromConfigSection();
+            var container = StructureMap.IoC.IoC.CreateContainerWithRegistryFromConfigSection();
 
             var sut = container.GetInstance<ClassUsingIFoo>();
 

@@ -21,43 +21,39 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace biz.dfch.CS.Examples.DI.StructureMap.Tests.SetterInjection
 {
     [TestClass]
-    public class ClassWithAnnotatedSetterPropertiesTest
+    public class AnotherClassWithSetterPropertyTest
     {
         [TestMethod]
-        public void InstantiationWithoutInjectionFails()
+        public void WithoutInjectionMessageSettingsIsNull()
         {
-            var sut = new ClassWithAnnotatedSetterProperties();
-
-            var result = sut.IsValid();
-            Assert.IsFalse(result);
-
+            var sut = new AnotherClassWithSetterProperty();
+            Assert.IsFalse(sut.IsValid());
             var errorMessages = sut.GetErrorMessages();
-            Assert.IsNotNull(errorMessages);
-            Assert.IsTrue(errorMessages.Any(e => e.Contains("Message")));
+            Assert.IsTrue(errorMessages.Any(e => e.Contains("MessageSettings")));
         }
 
         [TestMethod]
-        public void InstantiationWithDefaultInjectionSucceeds()
+        public void WithDefaultRegistryMessageSettingsIsNull()
         {
             var container = StructureMap.IoC.IoC.CreateContainerWithDefaultRegistry();
 
-            var sut = container.GetInstance<ClassWithAnnotatedSetterProperties>();
+            var sut = container.GetInstance<AnotherClassWithSetterProperty>();
 
-            var result = sut.IsValid();
-            Assert.IsTrue(result);
+            Assert.IsFalse(sut.IsValid());
+            var errorMessages = sut.GetErrorMessages();
+            Assert.IsTrue(errorMessages.Any(e => e.Contains("MessageSettings")));
         }
 
         [TestMethod]
-        public void InstantiationWithInlineInjectionSucceeds()
+        public void WithInlineSetterBasedOnTypeRegistryMessageSettingsIsNotNull()
         {
-            var container = StructureMap.IoC.IoC.CreateContainerWithInlineSetter();
+            Assert.IsTrue(typeof(IMessageSettingsSetterInjection).IsAssignableFrom(typeof(AnotherClassWithSetterProperty)));
 
-            var sut = container.GetInstance<ClassWithAnnotatedSetterProperties>();
+            var container = StructureMap.IoC.IoC.CreateContainerWithInlineSetterBasedOnType();
 
-            var result = sut.IsValid();
-            Assert.IsTrue(result);
+            var sut = container.GetInstance<AnotherClassWithSetterProperty>();
 
-            Assert.IsNotNull(sut.MessageSettings);
+            Assert.IsTrue(sut.IsValid());
         }
     }
 }
