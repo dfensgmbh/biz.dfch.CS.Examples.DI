@@ -72,7 +72,7 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.IoC
             return result;
         }
 
-       public static Container CreateContainerWithInlineSetter()
+        public static Container CreateContainerWithInlineSetter()
         {
             var registry = new Registry();
             registry.IncludeRegistry<InlineSetterRegistry>();
