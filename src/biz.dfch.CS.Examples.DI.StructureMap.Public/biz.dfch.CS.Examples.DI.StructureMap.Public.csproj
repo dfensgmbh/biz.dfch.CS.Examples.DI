@@ -4,15 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AAAB2AFB-A44A-45F1-842F-4A0E1010E981}</ProjectGuid>
+    <ProjectGuid>{C09D6F7A-84E6-41D2-B23B-86E52B6AFB01}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>biz.dfch.CS.Examples.DI.StructureMap</RootNamespace>
-    <AssemblyName>biz.dfch.CS.Examples.DI.StructureMap</AssemblyName>
+    <RootNamespace>biz.dfch.CS.Examples.DI.StructureMap.Public</RootNamespace>
+    <AssemblyName>biz.dfch.CS.Examples.DI.StructureMap.Public</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <TargetFrameworkProfile />
+    <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -122,13 +122,11 @@
       <HintPath>..\packages\biz.dfch.CS.Commons.1.9.0\lib\biz.dfch.CS.Commons.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="StructureMap, Version=4.4.2.472, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StructureMap.4.4.2\lib\net45\StructureMap.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -138,65 +136,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassUsingIFoo.cs" />
-    <Compile Include="CustomRegistrationConvention\ContractClassForIController.cs" />
-    <Compile Include="CustomRegistrationConvention\SpecialController.cs" />
-    <Compile Include="CustomRegistrationConvention\ControllerSettings.cs" />
-    <Compile Include="CustomRegistrationConvention\IController.cs" />
-    <Compile Include="Foo.cs" />
     <Compile Include="CodeContracts.cs" />
-    <Compile Include="IFoo.cs" />
-    <Compile Include="InjectionDependingOnAppConfig\AlphaPluginSettings.cs" />
-    <Compile Include="InjectionDependingOnAppConfig\ContractClassForIPlugin.cs" />
-    <Compile Include="InjectionDependingOnAppConfig\DefaultPluginSettings.cs" />
-    <Compile Include="InjectionDependingOnAppConfig\DefaultPlugin.cs" />
-    <Compile Include="InjectionDependingOnAppConfig\IPlugin.cs" />
-    <Compile Include="InjectionDependingOnAppConfig\AlphaPlugin.cs" />
-    <Compile Include="InjectionDependingOnAppConfig\PluginConfigurationSection.cs" />
-    <Compile Include="InjectionDependingOnAppConfig\PluginHost.cs" />
-    <Compile Include="IoC\Conventions\PropertySetterRegistrationConvention.cs" />
-    <Compile Include="IoC\Conventions\ControllerRegistrationConvention.cs" />
-    <Compile Include="IoC\Registries\InlineSetterBasedOnTypeRegistry.cs" />
-    <Compile Include="IoC\Registries\ControllerRegistry.cs" />
-    <Compile Include="IoC\Registries\InlineSetterRegistry.cs" />
-    <Compile Include="IoC\Registries\MultipleAssembliesThatImplementIExtendSomethingRegistry.cs" />
-    <Compile Include="IoC\Registries\PluginSelectionRegistry.cs" />
-    <Compile Include="Message\ContractClassForIMessage.cs" />
-    <Compile Include="Message\IMessage.cs" />
-    <Compile Include="Message\IMessageSettings.cs" />
-    <Compile Include="IoC\Registries\DefaultRegistry.cs" />
-    <Compile Include="IoC\Registries\MessageSettingsFromConfigurationSectionRegistry.cs" />
-    <Compile Include="Message\Message.cs" />
-    <Compile Include="Message\MessageSettings.cs" />
-    <Compile Include="Message\MessageSettingsFromConfigSection.cs" />
-    <Compile Include="MultipleAssemblies\ExtenderHost.cs" />
-    <Compile Include="MultipleAssemblies\ExtendSomething.cs" />
+    <Compile Include="ContractClassForIExtendSomething.cs" />
+    <Compile Include="IExtendSomething.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resouces.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resouces.resx</DependentUpon>
-    </Compile>
-    <Compile Include="IoC\IoC.cs" />
-    <Compile Include="SetterInjection\AnotherClassWithSetterProperty.cs" />
-    <Compile Include="SetterInjection\ClassWithAnnotatedSetterProperties.cs" />
-    <Compile Include="SetterInjection\IMessageSettingsSetterInjection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resouces.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resouces.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\biz.dfch.CS.Examples.DI.StructureMap.Public\biz.dfch.CS.Examples.DI.StructureMap.Public.csproj">
-      <Project>{c09d6f7a-84e6-41d2-b23b-86e52b6afb01}</Project>
-      <Name>biz.dfch.CS.Examples.DI.StructureMap.Public</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

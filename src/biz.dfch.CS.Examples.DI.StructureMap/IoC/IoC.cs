@@ -106,5 +106,14 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.IoC
 
         public static Container PluginContainer { get; private set; }
 
+        public static Container CreateContainerWithIExtendSomethingFromMultipleAssemblies()
+        {
+            var registry = new Registry();
+            registry.IncludeRegistry<MultipleAssembliesThatImplementIExtendSomethingRegistry>();
+
+            var result = new Container(registry);
+            return result;
+        }
+
     }
 }
