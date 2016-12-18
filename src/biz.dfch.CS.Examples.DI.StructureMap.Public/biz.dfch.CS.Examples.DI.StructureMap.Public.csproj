@@ -139,6 +139,7 @@
     <Compile Include="CodeContracts.cs" />
     <Compile Include="ContractClassForIExtendSomething.cs" />
     <Compile Include="IExtendSomething.cs" />
+    <Compile Include="MefLoader\IMefPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

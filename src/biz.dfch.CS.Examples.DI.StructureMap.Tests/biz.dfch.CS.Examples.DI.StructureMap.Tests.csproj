@@ -160,6 +160,7 @@
     <Compile Include="InjectionDependingOnAppConfig\PluginHostTest.cs" />
     <Compile Include="IoC\IoCTest.cs" />
     <Compile Include="IoC\Conventions\PropertySetterRegistrationConventionTest.cs" />
+    <Compile Include="MefLoader\MefLoaderTest.cs" />
     <Compile Include="MultipleAssemblies\ExtenderHostTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetterInjection\AnotherClassWithSetterPropertyTest.cs" />

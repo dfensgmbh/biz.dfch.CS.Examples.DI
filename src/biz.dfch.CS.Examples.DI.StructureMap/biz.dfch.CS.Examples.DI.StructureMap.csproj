@@ -127,6 +127,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -154,6 +155,7 @@
     <Compile Include="InjectionDependingOnAppConfig\AlphaPlugin.cs" />
     <Compile Include="InjectionDependingOnAppConfig\PluginConfigurationSection.cs" />
     <Compile Include="InjectionDependingOnAppConfig\PluginHost.cs" />
+    <Compile Include="IoC\Conventions\MefRegistrationConvention.cs" />
     <Compile Include="IoC\Conventions\PropertySetterRegistrationConvention.cs" />
     <Compile Include="IoC\Conventions\ControllerRegistrationConvention.cs" />
     <Compile Include="IoC\Registries\InlineSetterBasedOnTypeRegistry.cs" />
@@ -161,6 +163,10 @@
     <Compile Include="IoC\Registries\InlineSetterRegistry.cs" />
     <Compile Include="IoC\Registries\MultipleAssembliesThatImplementIExtendSomethingRegistry.cs" />
     <Compile Include="IoC\Registries\PluginSelectionRegistry.cs" />
+    <Compile Include="MefLoader\MefLoader.cs" />
+    <Compile Include="MefLoader\MefLoaderSettings.cs" />
+    <Compile Include="MefLoader\MefRegistry.cs" />
+    <Compile Include="MefLoader\SomeMefPlugin.cs" />
     <Compile Include="Message\ContractClassForIMessage.cs" />
     <Compile Include="Message\IMessage.cs" />
     <Compile Include="Message\IMessageSettings.cs" />
