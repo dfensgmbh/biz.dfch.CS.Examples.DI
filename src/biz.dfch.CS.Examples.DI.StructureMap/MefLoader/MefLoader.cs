@@ -32,9 +32,9 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.MefLoader
     public class MefLoader
     {
         private static readonly object _lock = new object();
-        public static Type Type { get; private set; }
+        public static Type InterfaceType { get; private set; }
 
-        private static ConcurrentDictionary<Type, Container> _containers = 
+        private static readonly ConcurrentDictionary<Type, Container> _containers = 
             new ConcurrentDictionary<Type, Container>();
 
         private readonly MefLoaderSettings settings;
@@ -60,13 +60,24 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.MefLoader
             this.registry = registry;
         }
 
+        public T GetInstance<T>(Type concreteType)
+            where T : class
+        {
+            Contract.Requires(null != concreteType);
+            Contract.Ensures(null != Contract.Result<T>());
+
+            var instance = GetInstances<T>().ToList().FirstOrDefault(e => e.GetType() == concreteType);
+            return instance;
+        }
+
         public T GetInstance<T>()
             where T : class
         {
             Contract.Ensures(null != Contract.Result<T>());
 
-            var instance = GetInstances<T>().FirstOrDefault();
-            return instance;
+            var instances = GetInstances<T>().ToList();
+            Contract.Assert(1 == instances.Count(), instances.ToString());
+            return instances.First();
         }
 
         public IEnumerable<T> GetInstances<T>()
@@ -108,13 +119,25 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.MefLoader
             Container container;
             lock (_lock)
             {
-                Type = typeof(T);
+                InterfaceType = typeof(T);
 
                 container = _containers.GetOrAdd(typeof(T), addContainerFunc(typeof(T)));
             }
 
-            Trace.WriteLine(container.WhatDoIHave());
-            Trace.WriteLine(container.WhatDidIScan());
+            var instanceRefs = container.Model.AllInstances
+                .Where(e => e.PluginType.IsAssignableFrom(typeof(T)))
+                .ToList();
+            var sb = new StringBuilder();
+            sb.AppendFormat("InterfaceType '{0}' resolved the following instances:", typeof(T).ToString());
+            foreach (var instanceRef in instanceRefs)
+            {
+                sb.AppendFormat(" '{0}'.", instanceRef.PluginType.AssemblyQualifiedName);
+            }
+            Trace.WriteLine(sb.ToString());
+
+            //Trace.WriteLine(container.WhatDoIHave());
+            //Trace.WriteLine(container.WhatDidIScan());
+
             try
             {
                 container.AssertConfigurationIsValid();
@@ -122,6 +145,8 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.MefLoader
             catch (Exception ex)
             {
                 Trace.WriteLine(ex.Message);
+
+                throw;
             }
 
             var instances = container.GetAllInstances<T>();

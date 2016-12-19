@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using biz.dfch.CS.Examples.DI.StructureMap.MefLoader;
 using biz.dfch.CS.Examples.DI.StructureMap.Public.MefLoader;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using StructureMap.Graph.Scanning;
 
 namespace biz.dfch.CS.Examples.DI.StructureMap.Tests.MefLoader
 {
@@ -59,14 +60,23 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.Tests.MefLoader
         [TestMethod]
         public void ResolvingMultipleTypesSucceeds()
         {
+            var typeNames = new[] { typeof(SomeMefPlugin).ToString(), "AnotherMefPlugin" };
+
             var settings = new MefLoaderSettings();
             settings.SetExtensionsFolderToExecutingAssembly();
 
             var sut = new StructureMap.MefLoader.MefLoader(settings);
 
-            var instances = sut.GetInstances<IMefPlugin>();
+            var instances = sut.GetInstances<IMefPlugin>().ToList();
             Assert.IsNotNull(instances);
-            Assert.AreEqual(2, instances.Count());
+            Assert.IsTrue(typeNames.Length <= instances.Count);
+
+            foreach (var instance in instances)
+            {
+                var typeFullName = instance.GetType().FullName;
+                var typeCouldBeResolved = typeNames.Any(typeName => typeNames.Contains(typeName));
+                Assert.IsTrue(typeCouldBeResolved, typeFullName);
+            }
         }
     }
 }

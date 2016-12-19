@@ -39,7 +39,7 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.IoC.Conventions
                 .ToList()
                 .ForEach(type =>
                 {
-                    registry.For(MefLoader.MefLoader.Type).Use(type)
+                    registry.For(MefLoader.MefLoader.InterfaceType).Use(type)
                         .Singleton();
                 });
 
@@ -47,9 +47,9 @@ namespace biz.dfch.CS.Examples.DI.StructureMap.IoC.Conventions
 
         public static Func<Type, bool> TypeFilter = type =>
         {
-            Contract.Requires(null != MefLoader.MefLoader.Type);
+            Contract.Requires(null != MefLoader.MefLoader.InterfaceType);
 
-            return MefLoader.MefLoader.Type.IsAssignableFrom(type);
+            return MefLoader.MefLoader.InterfaceType.IsAssignableFrom(type);
         };
     }
 }

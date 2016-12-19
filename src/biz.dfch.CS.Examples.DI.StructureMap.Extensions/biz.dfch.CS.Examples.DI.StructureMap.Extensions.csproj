@@ -145,6 +145,7 @@
     <Compile Include="ExtendSomething.cs" />
     <Compile Include="ExtendSomethingSettings.cs" />
     <Compile Include="MefLoader\AnotherMefPlugin.cs" />
+    <Compile Include="MefLoader\SomeMefPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

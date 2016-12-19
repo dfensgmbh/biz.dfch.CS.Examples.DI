@@ -14,26 +14,16 @@
  * limitations under the License.
  */
 
-using System.Diagnostics.Contracts;
-using biz.dfch.CS.Examples.DI.StructureMap.Public;
+using System.Linq;
+using biz.dfch.CS.Examples.DI.StructureMap.Public.MefLoader;
 
-namespace biz.dfch.CS.Examples.DI.StructureMap.Extensions
+namespace biz.dfch.CS.Examples.DI.StructureMap.Extensions.MefLoader
 {
-    public class ExtendSomething : IExtendSomething
+    public class SomeMefPlugin : IMefPlugin
     {
-        public string StringProperty { get; set; }
-
-        public ExtendSomething(ExtendSomethingSettings settings)
+        public object Invoke(object value)
         {
-            Contract.Requires(null != settings);
-            Contract.Requires(settings.IsValid());
-
-            StringProperty = settings.StringProperty;
-        }
-            
-        public bool CompareWithProperty(string value)
-        {
-            return value.Equals(StringProperty);
+            return value.ToString().Reverse();
         }
     }
 }
